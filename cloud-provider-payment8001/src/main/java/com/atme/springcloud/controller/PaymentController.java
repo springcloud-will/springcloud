@@ -1,13 +1,14 @@
 package com.atme.springcloud.controller;
 
+import com.atme.springcloud.service.PaymentService;
 import com.atme.springcloud.entities.CommonResult;
 import com.atme.springcloud.entities.Payment;
-import com.atme.springcloud.service.PaymentService;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class PaymentController {

@@ -1,8 +1,8 @@
 package com.atme.springcloud.service.impl;
 
 import com.atme.springcloud.dao.PaymentDao;
-import com.atme.springcloud.entities.Payment;
 import com.atme.springcloud.service.PaymentService;
+import com.atme.springcloud.entities.Payment;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
