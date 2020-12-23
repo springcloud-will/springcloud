@@ -9,15 +9,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CommonResult<T> {
 
+    private String instanceName;
     private String error;
     private String message;
     private T data;
 
-    public CommonResult(T data) {
-        this(null, null, data);
+    public CommonResult(String instanceName, T data) {
+        this(instanceName, null, null, data);
     }
 
-    public CommonResult(String error, String message) {
-        this(error, message, null);
+    public CommonResult(String instanceName, String error, String message) {
+        this(instanceName, error, message, null);
     }
 }

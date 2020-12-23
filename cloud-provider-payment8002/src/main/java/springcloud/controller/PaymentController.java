@@ -1,19 +1,19 @@
-package com.atme.springcloud.controller;
+package springcloud.controller;
 
 import com.atme.springcloud.entities.CommonResult;
 import com.atme.springcloud.entities.Payment;
-import com.atme.springcloud.service.PaymentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import springcloud.service.PaymentService;
 
 import javax.annotation.Resource;
 
 @RestController
 public class PaymentController {
 
-    private final static String InstanceName = "PAYMENT-SERVICE-8001";
+    private final static String InstanceName = "PAYMENT-SERVICE-8002";
 
     @Resource
     private PaymentService paymentService;
