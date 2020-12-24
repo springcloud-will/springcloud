@@ -1,4 +1,4 @@
-package springcloud.service;
+package com.atme.springcloud.service;
 
 import com.atme.springcloud.entities.Payment;
 import org.apache.ibatis.annotations.Param;

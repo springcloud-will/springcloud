@@ -3,6 +3,7 @@ package com.atme.springcloud.controller;
 import com.atme.springcloud.entities.CommonResult;
 import com.atme.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +16,7 @@ import java.util.Map;
 @Slf4j
 public class OrderController {
 
-    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_SERVICE = "http://CLOUD-PAYMENT-SERVICE";
 
     @Resource
     private RestTemplate restTemplate;
@@ -23,7 +24,7 @@ public class OrderController {
 
     @GetMapping("/consumer/payment/create")
     public CommonResult<Payment> create(Payment payment) {
-        return restTemplate.postForObject(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
+        return restTemplate.postForObject(PAYMENT_SERVICE + "/payment/create", payment, CommonResult.class);
     }
 
 
@@ -31,7 +32,7 @@ public class OrderController {
     public CommonResult<Payment> getById(Long id) {
         Map<String, Long> pathVar = new HashMap<String, Long>();
         pathVar.put("id", id);
-        return restTemplate.getForObject(PAYMENT_URL + "/payment/getById?id={id}", CommonResult.class, pathVar);
+        return restTemplate.getForObject(PAYMENT_SERVICE + "/payment/getById?id={id}", CommonResult.class, pathVar);
     }
 
 

@@ -1,4 +1,4 @@
-package springcloud.dao;
+package com.atme.springcloud.dao;
 
 import com.atme.springcloud.entities.Payment;
 import org.apache.ibatis.annotations.Mapper;
