@@ -14,7 +14,7 @@ import java.util.UUID;
 @RestController
 public class PaymentController {
 
-    private final static String InstanceName = "PAYMENT-SERVICE-8004";
+    private final static String InstanceName = "PAYMENT-SERVICE-8006";
 
     @Resource
     private PaymentService paymentService;
