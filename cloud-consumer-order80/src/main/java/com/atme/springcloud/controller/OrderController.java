@@ -16,7 +16,7 @@ import java.util.Map;
 @Slf4j
 public class OrderController {
 
-    public static final String PAYMENT_SERVICE = "http://CLOUD-PAYMENT-SERVICE";
+    public static final String PAYMENT_SERVICE = "http://cloud-payment-service";
 
     @Resource
     private RestTemplate restTemplate;
