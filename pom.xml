@@ -23,6 +23,7 @@
         <module>cloud-consumer-consul-order80</module>
         <module>cloud-consumer-openfeign-order80</module>
         <module>cloud-provider-payment8001-hystrix</module>
+        <module>cloud-consumer-hystrix-order80</module>
     </modules>
 
     <!-- 统一管理jar包版本 -->

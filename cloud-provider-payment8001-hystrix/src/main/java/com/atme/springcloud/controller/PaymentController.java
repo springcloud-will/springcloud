@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class PaymentController {
 
-    private final static String InstanceName = "PAYMENT-SERVICE-8001";
+    private final static String InstanceName = "PAYMENT-SERVICE-HYSTRIX-8001";
 
     @Resource
     private PaymentService paymentService;
