@@ -3,9 +3,6 @@ package com.atme.springcloud.controller;
 import com.atme.springcloud.entities.CommonResult;
 import com.atme.springcloud.entities.Payment;
 import com.atme.springcloud.service.OrderHystrixService;
-import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +11,7 @@ import javax.annotation.Resource;
 
 @RestController
 @Slf4j
-@DefaultProperties(defaultFallback = "globalFallback")
+//@DefaultProperties(defaultFallback = "globalFallback")
 public class OrderController {
 
     @Resource
@@ -29,7 +26,7 @@ public class OrderController {
 //    @HystrixCommand(fallbackMethod = "fallback", commandProperties = {
 //            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
 //    })
-    @HystrixCommand
+//    @HystrixCommand
     public CommonResult<String> discoveryTimeout() {
         return orderHystrixService.discoveryTimeout();
     }
