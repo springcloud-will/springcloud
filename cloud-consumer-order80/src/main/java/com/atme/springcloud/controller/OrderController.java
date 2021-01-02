@@ -32,6 +32,7 @@ public class OrderController {
     public CommonResult<Payment> getById(Long id) {
         Map<String, Long> pathVar = new HashMap<String, Long>();
         pathVar.put("id", id);
+        log.info("OnlyAllowPayment8002");
         return restTemplate.getForObject(PAYMENT_SERVICE + "/payment/getById?id={id}", CommonResult.class, pathVar);
     }
 

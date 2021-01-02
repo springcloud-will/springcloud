@@ -26,7 +26,6 @@ public class PaymentController {
     @Resource
     private DiscoveryClient discoveryClient;
 
-
     @PostMapping("/payment/create")
     public CommonResult<Long> create(@RequestBody Payment payment) {
         Long primaryKey = paymentService.create(payment);
