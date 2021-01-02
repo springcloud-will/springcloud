@@ -19,6 +19,10 @@ ribbon:
   ReadTimeout: 10000
   ConnectTimeout: 10000
 
+feign:
+  hystrix:
+    enabled: true
+
 logging:
   level:
     com.george.springcloud.service: info
