@@ -14,7 +14,6 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 public class PaymentController {
@@ -42,15 +41,8 @@ public class PaymentController {
 
     @GetMapping("/payment/discovery/timeout")
     public CommonResult<String> discoveryTimeout() {
-
-        try {
-            TimeUnit.SECONDS.sleep(6);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return new CommonResult(InstanceName, "你得不到我的");
-
+        String result = paymentService.timeout();
+        return new CommonResult(InstanceName, result);
     }
 
     @PostMapping("/payment/create")

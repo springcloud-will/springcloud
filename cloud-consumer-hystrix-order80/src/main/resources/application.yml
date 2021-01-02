@@ -15,11 +15,10 @@ eureka:
     instance-id: hystrix-order80
     prefer-ip-address: true
 
-feign:
-  httpclient:
-    enabled: true
-    connection-timeout: 1000000
-    connection-timer-repeat: 10000
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
 logging:
   level:
     com.george.springcloud.service: info

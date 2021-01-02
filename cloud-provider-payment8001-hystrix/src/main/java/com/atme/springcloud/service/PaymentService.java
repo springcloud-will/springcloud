@@ -11,4 +11,6 @@ public interface PaymentService {
 
     Payment getById(@Param("id") Long id);
 
+    String timeout();
+
 }
