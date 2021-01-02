@@ -27,25 +27,6 @@ public class PaymentController {
     @Resource
     private DiscoveryClient discoveryClient;
 
-    @PostMapping("/payment/create")
-    public CommonResult<Long> create(@RequestBody Payment payment) {
-        Long primaryKey = paymentService.create(payment);
-        if (primaryKey == 0) {
-            return new CommonResult<Long>(InstanceName, "Payment.FailToCreate", "创建支付记录失败");
-        }
-        return new CommonResult<Long>(InstanceName, primaryKey);
-    }
-
-    @GetMapping("/payment/getById")
-    public CommonResult<Payment> getById(Long id) {
-        Payment payment = paymentService.getById(id);
-        if (payment == null) {
-            return new CommonResult<Payment>(InstanceName, "Payment.NotExisted", "支付记录" + id + "不存在");
-        }
-        return new CommonResult<Payment>(InstanceName, payment);
-    }
-
-
     @GetMapping("/payment/discovery")
     public CommonResult<Payment> discovery() {
         List<String> services = discoveryClient.getServices();
@@ -71,4 +52,23 @@ public class PaymentController {
         return new CommonResult(InstanceName, "你得不到我的");
 
     }
+
+    @PostMapping("/payment/create")
+    public CommonResult<Long> create(@RequestBody Payment payment) {
+        Long primaryKey = paymentService.create(payment);
+        if (primaryKey == 0) {
+            return new CommonResult<Long>(InstanceName, "Payment.FailToCreate", "创建支付记录失败");
+        }
+        return new CommonResult<Long>(InstanceName, primaryKey);
+    }
+
+    @GetMapping("/payment/getById")
+    public CommonResult<Payment> getById(Long id) {
+        Payment payment = paymentService.getById(id);
+        if (payment == null) {
+            return new CommonResult<Payment>(InstanceName, "Payment.NotExisted", "支付记录" + id + "不存在");
+        }
+        return new CommonResult<Payment>(InstanceName, payment);
+    }
+
 }
