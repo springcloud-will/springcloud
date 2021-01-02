@@ -1,7 +1,7 @@
 package com.atme.springcloud.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import com.atme.springcloud.dao.PaymentDao;
-import com.atme.springcloud.entities.CommonResult;
 import com.atme.springcloud.entities.Payment;
 import com.atme.springcloud.service.PaymentService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -39,8 +39,27 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     public String fallback() {
-        return "你个废物。";
+        return "服务降级，你个废物。";
     }
 
+    @HystrixCommand(
+            fallbackMethod = "paymentCircuitBreakerFallback", commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),// 是否开启断路器
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),// 请求次数
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),// 时间窗口期
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60")// 失败率到多少
+    })
+    public String paymentCircuitBreaker(Long id) {
+
+        if (id < 0) {
+            throw new RuntimeException("id不能为负数");
+        }
+        String serialNumber = IdUtil.simpleUUID();
+        return Thread.currentThread().getName() + "\t" + "调用成功，流水号" + serialNumber;
+    }
+
+    public String paymentCircuitBreakerFallback(Long id) {
+        return "id 不能为负数，请稍后再试";
+    }
 
 }

@@ -41,7 +41,9 @@ public class PaymentController {
 
     @GetMapping("/payment/discovery/timeout")
     public CommonResult<String> discoveryTimeout() {
+
         String result = paymentService.timeout();
+
         return new CommonResult(InstanceName, result);
     }
 
@@ -57,10 +59,20 @@ public class PaymentController {
     @GetMapping("/payment/getById")
     public CommonResult<Payment> getById(Long id) {
         Payment payment = paymentService.getById(id);
+
         if (payment == null) {
             return new CommonResult<Payment>(InstanceName, "Payment.NotExisted", "支付记录" + id + "不存在");
         }
+
         return new CommonResult<Payment>(InstanceName, payment);
+    }
+
+    @GetMapping("/payment/circuit")
+    public CommonResult<String> circuit(Long id) {
+
+        String str = paymentService.paymentCircuitBreaker(id);
+
+        return new CommonResult<String>(InstanceName, str);
     }
 
 }
