@@ -18,8 +18,13 @@ public class OrderController {
     private PaymentFeignService paymentFeignService;
 
     @GetMapping("/consumer/payment/discovery")
-    public CommonResult<Payment> getById() {
+    public CommonResult<Payment> discovery() {
         return paymentFeignService.discovery();
+    }
+
+    @GetMapping("/consumer/payment/discoveryTimeout")
+    public CommonResult<String> discoveryTimeout() {
+        return paymentFeignService.discoveryTimeout();
     }
 
 

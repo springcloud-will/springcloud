@@ -56,4 +56,17 @@ public class PaymentController {
         return new CommonResult(InstanceName, map);
 
     }
+
+    @GetMapping("/payment/discovery/timeout")
+    public CommonResult<String> discoveryTimeout() {
+
+        try {
+            Thread.sleep(5 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return new CommonResult(InstanceName, "你得不到我的");
+
+    }
 }

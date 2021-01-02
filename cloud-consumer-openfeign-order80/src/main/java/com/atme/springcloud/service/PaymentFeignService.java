@@ -13,4 +13,7 @@ public interface PaymentFeignService {
     @GetMapping("/payment/discovery")
     CommonResult<Payment> discovery();
 
+    @GetMapping("/payment/discovery/timeout")
+    public CommonResult<String> discoveryTimeout();
+
 }
