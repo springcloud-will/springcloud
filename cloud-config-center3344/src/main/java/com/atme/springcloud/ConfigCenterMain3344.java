@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
+// 发送配置中心全量刷新请求 curl -X POST "http://localhost:3344/actuator/bus-refresh"
 @SpringBootApplication
 @EnableConfigServer
 public class ConfigCenterMain3344 {
