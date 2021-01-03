@@ -6,11 +6,14 @@ spring:
     name: cloud-gateway-service
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: payment-route
-          uri: http://localhost:8001
+          uri: lb://cloud-payment-service
           predicates:
-            - Path=/payment/discovery/**
+            - Path=/payment/discovery
 eureka:
   client:
     register-with-eureka: true
