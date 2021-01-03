@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 // 不会自动刷新，需要localhost:3355/actuator/refresh 刷新
 public class ConfigController {
 
-
-    private final static String InstanceName = "client-config3355";
+    private final static String InstanceName = "client-config3366";
 
     @Value("${config.info}")
     private String configInfo;

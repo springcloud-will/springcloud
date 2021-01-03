@@ -8,10 +8,17 @@ spring:
     config:
       server:
         git:
+          # todo  是否可以配置私有库的访问账号密码
           uri: https://github.com/springcloud-will/springcloud-config.git
           search-paths:
             - springcloud-config
           default-label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 eureka:
   client:
     register-with-eureka: true
@@ -22,5 +29,10 @@ eureka:
     instance-id: config-center3344
     prefer-ip-address: true
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 
